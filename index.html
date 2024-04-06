@@ -1,0 +1,420 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href = "style.css">
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/elegant-2');
+        @import url('https://fonts.cdnfonts.com/css/garamond');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,100;9..40,200&display=swap');
+
+    </style>
+    <meta name="robots" content="noindex">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body>
+<div class = "preloader">
+    Welcome
+</div>
+<div class = "popup">
+    <div class = "cross">
+        <button onclick = "togglePopup()">✕</button>
+    </div>
+    <p class = "title">Thank you</p>
+    <p class= "description">Your information has been submitted successfully.</p>
+    <div class = "button">
+        <button onclick = "togglePopup()">Dismiss</button>
+    </div>
+</div>
+<div class = "container">
+
+    <div class = "navbar">
+        <img src = "resource/logo3.png" class = icon>
+        <nav>
+            <ul id = "menuList">
+                <li><button onclick = "toggleHome()"">Home</button></li>
+                <!--<li><button href ="">Privacy</button></li>-->
+                <!--<li><button>Others</button></li>-->
+                <li><button onclick = "toggleLogin()">Staff Login</button></li>
+                <li><a href = "index_deu.html">Deutsch</a></li>
+                <li><a href = "index.html">English</a></li>
+            </ul>
+        </nav>
+        <img src = "resource/menu.png" class = "menu-icon" onclick="togglemenu()">
+    </div>
+    <div class="row">
+        <div class = "col-1">
+
+            <div class = "text">
+            <h2>Welcome to<br>
+            The Registration System</h2>
+            Fill out your information for your individualised treatment method developed by Dr. Augustinus Bader.<br>
+            <button onclick = "scrollToElement()">Register</button>
+            </div>
+
+            <div class = "login_form">
+
+                <div class = "title">Staff Login </div>
+                <form method = "post" action = "/login" id = "login_form">
+                    <input type = "hidden", value = "eng" name ="lang">
+                    <div class = "input-field">
+                        <label>Username</label>
+                        <input type = "text", placeholder="" name = "user" required>
+                    </div>
+
+                    <div class = "input-field">
+                        <label>Password</label>
+                        <input type = "password", placeholder="" name = "pass" required>
+                    </div>
+                    <div class = "error">
+                        <%if(locals.error){%>
+                            <%=error%>
+                        <%}%>
+                    </div>
+                    <div class = "button">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class = "col-2">
+            <img src = "" class = "model">
+        </div>
+    </div>
+
+
+</div>
+<!--End of First Page-->
+
+
+<div class = "container-2">
+
+    <div class = "form">
+        <div class  ="toggle">
+            <img src = "resource/minus.png" onclick = "toggleC2()">
+        </div>
+        <div class= "home">
+            <img class = "home-button" onclick = "scrollToHome()" src = "resource/home.png">
+        </div>
+
+        <header>Arrival Form</header>
+        <div class = "reminder">Please take five minutes and fill in this form carefully.</div>
+
+        <form method = "post" action = "/post" id="patient_form">
+
+            <div class = "section">Personal Information</div>
+
+            <div class = "input-field">
+                <label>Full Name</label>
+                <input type = "text", placeholder="" required name = "name">
+            </div>
+
+            <div class = "input-field">
+                <label>Date of birth</label>
+                <input type = "date", placeholder="" required name="birthday">
+            </div>
+
+            <div class = "input-field">
+                <label>Telephone</label>
+                <input type = "text", placeholder="+491234567890" required name="mobile">
+            </div>
+            <div class = "input-field">
+                <label>Email</label>
+                <input type = "email", placeholder="abc123@gmail.com"  required name="email">
+            </div>
+            <div class = "input-field">
+                <label>Emergency Contact</label>
+                <input type = "text", placeholder="+491234567890 Partner" required name="emergency">
+            </div>
+            <div class = "input-field">
+                <label>Address</label>
+                <input type = "text", placeholder="" required name="address">
+            </div>
+            <div class = "section">Endorsement on Treatment</div>
+            <p>Between treating physician</p>
+            <p class = "person_title">-Doctor / Physician-</p>
+
+            <div class = "input-field">
+                <label>and</label>
+                <input type = "text", placeholder="Full Name" required name="name2">
+            </div>
+
+            <p class = "person_title">-Patient-</p>
+
+            <p>during the consideration of the upcoming treatment using processing own-blood (hereinafter: Treatment):</p>
+
+            <p>
+                1. The physician has explained to the patient that the treatment includes a new
+                method that is currently still not generally recognized in the medicine and therefore
+                is still not established as a standard method for the treatment of this disease.
+            </p>
+
+            <p>
+                In this context, the physician has clarified that despite to available first very
+                promising results for this new method, there is still no generally accepted scientific
+                knowledge on the risks and benefits of its medical use. Therefore, the treatment may cause unknown risks,
+                as was clarified by the treating physician.
+            </p>
+
+            <p>
+                2. In this context, the parties have discussed about availabe treatment options with their
+                respective anticipated benefits and drawbacks, which are mainly as follows, and the patient chooses after
+                discussing with the physician:
+            </p>
+
+            <div class = "checkboxes">
+                <div class = checkbox>
+                    <label><input type="radio" name = "treatment" value = "watch">Watching/no further treatment for the present</label>
+                </div>
+                Hazards/risks (to be filled out below)
+                <div class = checkbox>
+                    <label><input type="radio" name = "treatment" value = "further">further treatment according to the guidelines</label>
+                </div>
+                Hazards/risks (to be filled out below)
+                <div class = checkbox>
+                    <label><input type="radio" name = "treatment" value = "blood">Treatment with autologous blood</label>
+                </div>
+                <p>Advantages: Shorter healing period, improved healing, reduced scarring, reduced pain</p>
+                <p>Disadvantages: Unknown risks due to new technology</p>
+                <div class = checkbox>
+                    <label><input type="radio" name = "treatment" value = "discuss">To be discussed in detail with physician</label>
+                </div>
+            </div>
+            <div class = "input-field">
+                <label>Risks/Hazard</label>
+                <input type = text name = "risks" placeholder="Fill in if appropriate">
+            </div>
+
+            <p>
+                3. The patient confirms whether he or she is a competitive athlete and whether he or she participates in active training or
+                competitions:
+            </p>
+
+            <div class = "checkboxes">
+                <div class = checkbox>
+                    <label><input type="radio" name = ath value="false">I am not a competitive athlete and I am not in active training</label>
+                </div>
+
+                <div class = checkbox>
+                    <label><input type="radio" name = ath value="true">I am a competitive athlete and I am in active training</label>
+                </div>
+            </div>
+
+            <div class = "section">Consent Form</div>
+            <!--<p>To new GDPR from 25.05.2018</p>-->
+            For collection / transimission of patient data
+            <div class = checkboxes>
+                <div class = checkbox>
+                    <label><input type="checkbox" required>
+                        I agree that Augustinus Bader Personalised Healthcare may use my data in
+                        digital form and contact me by phone or e-mail.
+                    </label>
+                </div>
+            </div>
+
+
+
+            <div class = checkboxes>
+                <div class = checkbox>
+                    <label><input type="checkbox" required>
+                        I hereby agree, <br>
+                        that as part of my medical treatment data may be transmitted to
+                        co-treating physicians / laboratories. <br>
+                        Treatment data may be obtained from other co-treating physicians / laboratories.
+                    </label>
+                </div>
+
+
+                <div class = checkbox>
+                    <label><input type="checkbox" required>
+                        I hereby agree, <br>
+                        that my laboratory samples are sent to a practice cooperating laboratory and special laboratories
+                        of complementary disciplines for the purpose of investigation and diagnosis may be transmitted.
+                    </label>
+                </div>
+            </div>
+
+            <p>
+                At any time, I have the right to receive information on the personal data
+                stored about me.
+            </p>
+
+            <p>
+                I can at any time demand the correction, deletion and blocking of my personal data
+                from my doctor and his co-operation partners, unless other legal regulations prevent this.
+            </p>
+
+            <p>
+                I understand that I can revoke this declaration at any time in full or in part
+                for the future without stating reasons.
+            </p>
+
+            <p>
+               After verification of the identity, treatment data may be passed on to the
+               following relatives / persons:
+            </p>
+
+            <div class = "input-field">
+                <label>Name / Address / Phone</label>
+                <input type = text name = "relative" placeholder="Name / Address / Phone" required>
+            </div>
+
+            <div class = "input-field">
+                <label>Date</label>
+                <input type = date , name = "date" required>
+            </div>
+
+            <div class = "section">Signature</div>
+
+            <div class = "signature">
+                <canvas>
+                </canvas>
+            </div>
+
+            <div class = "sig_buttons">
+                <button type = "button" id = "clear" onclick="clearSignature()">Clear</button>
+                <label><input id = "confirm" type = "checkbox" onclick="sendSignature()" required></input>Confirm</label>
+            </div>
+
+
+            <input type = "hidden", id="img" value = "" name ="sig">
+            <div class="g-recaptcha" data-sitekey="6Lezg3MnAAAAAOjar11_5ZxZu408Q9iOhmoYYEVF"></div>
+            <div class = "button">
+                <button type = "submit" onclick = "">Submit</button>
+            </div>
+
+            <input type = "hidden", value = "eng" name ="lang">
+            <!--<label class = "terms"><input type = "checkbox" required value = "agree">I agree that I filled out this form correctly.</label>-->
+        </form>
+    </div>
+</div>
+<div class = "container-3">
+
+
+</div>
+
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="captcha.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script>
+
+        var menuList = document.getElementById("menuList");
+        menuList.style.maxHeight = "0px";
+
+        function togglemenu(){
+            if(menuList.style.maxHeight == "0px"){
+                menuList.style.maxHeight = "330px";
+            }
+            else{
+                menuList.style.maxHeight = "0px";
+            }
+        }
+        const txt = document.querySelector('input[type="text"]');
+        txt.addEventListener('focus', (e) => {
+            if(menuList.style.maxHeight = "330px"){
+                togglemenu();
+            }
+
+        });
+        const pwd = document.querySelector('input[type="password"]');
+        pwd.addEventListener('focus', (e) => {
+            if(menuList.style.maxHeight = "330px"){
+                togglemenu();
+            }
+
+        });
+        function scrollToElement(){
+            var elmnt = document.getElementsByClassName("container-2")[0];
+            elmnt.style.display = "flex";
+            elmnt.scrollIntoView({behavior:'smooth', block:"start"});//, block:'center', inline:'center'});
+        }
+
+
+
+        function scrollToHome(){
+
+            var elmnt = document.getElementsByClassName("container")[0];
+            elmnt.scrollIntoView({behavior:'smooth', block:"start"});
+
+        }
+        function toggleHome(){
+            document.getElementsByClassName("login_form")[0].style.display="none"
+            document.getElementsByClassName("text")[0].style.display="block"
+
+            //togglemenu()
+        }
+        function toggleLogin(){
+            document.getElementsByClassName("login_form")[0].style.display="block"
+            document.getElementsByClassName("text")[0].style.display="none"
+            //togglemenu()
+        }
+
+        function setupSignatureBox(){
+            const canvas = document.querySelector("canvas");
+            const signaturePad = new SignaturePad(canvas);
+            return signaturePad;
+        }
+
+        function clearSignature(){
+            signaturePad.clear();
+            document.getElementById("confirm").checked = false;
+        }
+
+        function sendSignature(){
+            var img = signaturePad.toDataURL();
+
+            /*fetch('/api/path',
+            { method: 'POST', headers: { "content-type": "application/json"},
+            body: JSON.stringify({ file: img })
+            })
+            .then(response =>
+                {console.log(img)
+            })*/
+
+            if(!signaturePad.isEmpty()){
+                document.getElementById('img').value=img;
+            }
+            else{
+                document.getElementById('confirm').checked=false;
+            }
+        }
+
+        var signaturePad = setupSignatureBox();
+        var pics = new Array("resource/ab2.jpg");
+        var randomNum = Math.floor(Math.random() * pics.length);
+        document.getElementsByClassName("model")[0].src = pics[randomNum];
+
+
+
+        function loadingRemove(){
+            const loading = document.getElementsByClassName("preloader")[0];
+            loading.style.display = "none";
+        }
+        const firstVisit = sessionStorage.getItem('visited')
+        if(firstVisit == null){
+            window.addEventListener('load', function(){
+            document.getElementsByClassName("preloader")[0].style.animation= "draw 1.5s"
+            document.getElementsByClassName("preloader")[0].addEventListener("animationend",function(){
+                document.getElementsByClassName("preloader")[0].style.display ="none"
+            })
+            sessionStorage.setItem('visited',1)
+        })
+        }else{
+            loadingRemove()
+        }
+
+        function togglePopup(){
+            const popup = document.getElementsByClassName("popup")[0];
+            popup.style.display = "none";
+            setTimeout(location.reload())
+        }
+        function toggleC2(){
+            const c2= document.getElementsByClassName("container-2")[0];
+            c2.style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
